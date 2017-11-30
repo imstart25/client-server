@@ -10,14 +10,14 @@ var jwt = require('jsonwebtoken');
 var _ = require('lodash');
 
 router.post('/', function(req, res, next) {
-    var url = "https://graph.accountkit.com/v1.1/access_token?grant_type=authorization_code&code=" + req.body.code + "&access_token=AA|892199504260210|6f963fe06ebc888cdd74d55fd159f6ab";
+    var url = "https://graph.accountkit.com/v1.0/access_token?grant_type=authorization_code&code=" + req.body.code + "&access_token=AA|178256259422719|cea49254ce605e9da7f0b0ad60d4d41b";
     console.log('url', url);
     request(url, function (error, response, body) {
         if (!error) {
             var data = JSON.parse(body);
             var accessToken = data.access_token;
             console.log(accessToken)
-            var urlGetInfo = 'https://graph.accountkit.com/v1.1/me/?access_token=' + accessToken;
+            var urlGetInfo = 'https://graph.accountkit.com/v1.0/me/?access_token=' + accessToken;
 
             request(urlGetInfo, function (error, response, body) {
                 if (!error) {
